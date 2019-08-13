@@ -1,0 +1,16 @@
+<div class="item" *ngFor="let item of cart">
+    <p class="delete" (click)="removeItem(item)">X</p>
+    <p><span style="color: #F9AB55">Item: </span>{{item.product}}</p>
+    <p><span style="color: #F9AB55">Quantity: </span> {{item.quantity}}</p>
+    <p><span style="color: #F9AB55">Price: </span>{{item.price}}$</p>
+</div>
+
+<div (mouseenter)="this.checkoutState = !this.checkoutState" (mouseleave)="this.checkoutState = !this.checkoutState" [ngClass]="{ 'buy-cont-open' : checkoutState}" class="buy-cont-close">
+    
+    <div *ngIf="checkoutState" class="checkout">
+        <input placeholder="item" [(ngModel)]="item" type="text"/>
+        <input placeholder="quantity" [(ngModel)]="quantity" type="number"/>
+        <input placeholder="price" [(ngModel)]="price" type="number"/>
+        <button type="button" (click)="addItem()">Buy</button>
+    </div>
+</div>
